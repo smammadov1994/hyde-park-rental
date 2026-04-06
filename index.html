@@ -1163,12 +1163,12 @@
       gap: 40px;
       white-space: nowrap;
       width: max-content;
-      animation: marquee 25s linear infinite;
+      animation: marqueeScroll var(--marquee-dur, 40s) linear infinite;
     }
 
     .marquee-reverse { animation-direction: reverse; }
 
-    @keyframes marquee {
+    @keyframes marqueeScroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
@@ -2156,22 +2156,7 @@ feel at home.</span>
   <!-- ═══════ FOOTER ═══════ -->
   <footer class="footer">
     <div class="footer-marquee">
-      <div class="marquee-track">
-        <div class="marquee-item"><span class="marquee-dot"></span></div>
-        <div class="marquee-item"><span class="marquee-text">Hyde Park</span></div>
-        <div class="marquee-item"><span class="marquee-dot"></span></div>
-        <div class="marquee-item"><span class="marquee-text">Residence</span></div>
-        <div class="marquee-item"><span class="marquee-brand"><span>27 Northill St</span><span>APT 4H</span><span>Stamford, CT</span></span></div>
-        <div class="marquee-item"><span class="marquee-dot"></span></div>
-        <div class="marquee-item"><span class="marquee-text">Hyde Park</span></div>
-        <div class="marquee-item"><span class="marquee-dot"></span></div>
-        <div class="marquee-item"><span class="marquee-text">Residence</span></div>
-        <div class="marquee-item"><span class="marquee-brand"><span>27 Northill St</span><span>APT 4H</span><span>Stamford, CT</span></span></div>
-        <div class="marquee-item"><span class="marquee-dot"></span></div>
-        <div class="marquee-item"><span class="marquee-text">Hyde Park</span></div>
-        <div class="marquee-item"><span class="marquee-dot"></span></div>
-        <div class="marquee-item"><span class="marquee-text">Residence</span></div>
-        <div class="marquee-item"><span class="marquee-brand"><span>27 Northill St</span><span>APT 4H</span><span>Stamford, CT</span></span></div>
+      <div class="marquee-track" data-marquee>
         <div class="marquee-item"><span class="marquee-dot"></span></div>
         <div class="marquee-item"><span class="marquee-text">Hyde Park</span></div>
         <div class="marquee-item"><span class="marquee-dot"></span></div>
@@ -2180,22 +2165,7 @@ feel at home.</span>
       </div>
     </div>
     <div class="footer-marquee">
-      <div class="marquee-track marquee-reverse">
-        <div class="marquee-item"><span class="marquee-dot"></span></div>
-        <div class="marquee-item"><span class="marquee-text">$2,505/mo</span></div>
-        <div class="marquee-item"><span class="marquee-dot"></span></div>
-        <div class="marquee-item"><span class="marquee-text">780 Sq Ft</span></div>
-        <div class="marquee-item"><span class="marquee-brand"><span>1 Bed</span><span>1 Bath</span><span>Move-In Ready</span></span></div>
-        <div class="marquee-item"><span class="marquee-dot"></span></div>
-        <div class="marquee-item"><span class="marquee-text">$2,505/mo</span></div>
-        <div class="marquee-item"><span class="marquee-dot"></span></div>
-        <div class="marquee-item"><span class="marquee-text">780 Sq Ft</span></div>
-        <div class="marquee-item"><span class="marquee-brand"><span>1 Bed</span><span>1 Bath</span><span>Move-In Ready</span></span></div>
-        <div class="marquee-item"><span class="marquee-dot"></span></div>
-        <div class="marquee-item"><span class="marquee-text">$2,505/mo</span></div>
-        <div class="marquee-item"><span class="marquee-dot"></span></div>
-        <div class="marquee-item"><span class="marquee-text">780 Sq Ft</span></div>
-        <div class="marquee-item"><span class="marquee-brand"><span>1 Bed</span><span>1 Bath</span><span>Move-In Ready</span></span></div>
+      <div class="marquee-track marquee-reverse" data-marquee>
         <div class="marquee-item"><span class="marquee-dot"></span></div>
         <div class="marquee-item"><span class="marquee-text">$2,505/mo</span></div>
         <div class="marquee-item"><span class="marquee-dot"></span></div>
@@ -2409,6 +2379,19 @@ I-95 / Merritt Parkway</span>
       window.addEventListener('scroll', updateHeader, { passive: true });
       updateHeader();
     }
+
+    // ─── Marquee: clone items until track is 2x viewport width ───
+    document.querySelectorAll('[data-marquee]').forEach(track => {
+      const items = Array.from(track.children);
+      const viewW = window.innerWidth;
+      // Clone items until one "set" fills the viewport, then duplicate that set
+      while (track.scrollWidth < viewW * 2) {
+        items.forEach(item => track.appendChild(item.cloneNode(true)));
+      }
+      // Now duplicate everything for the -50% trick
+      const allItems = Array.from(track.children);
+      allItems.forEach(item => track.appendChild(item.cloneNode(true)));
+    });
   </script>
 </body>
 </html>

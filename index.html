@@ -827,6 +827,123 @@
     }
 
     /* ════════════════════════════════════════
+       NEIGHBORHOOD
+    ════════════════════════════════════════ */
+    .neighborhood {
+      padding: clamp(60px, 8vw, 120px) 0;
+    }
+
+    .neighborhood-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: clamp(40px, 5vw, 72px);
+      gap: var(--gutter);
+    }
+
+    .neighborhood-header p { max-width: 380px; color: var(--text-muted); }
+
+    .neighborhood-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .nb-card {
+      background: var(--cream);
+      padding: clamp(24px, 3vw, 40px);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: background 0.3s;
+    }
+
+    .nb-card:hover { background: var(--cream-dark); }
+
+    .nb-card-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: var(--gold-light);
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .nb-card-icon svg { width: 18px; height: 18px; }
+
+    .nb-card-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+      color: var(--text-dark);
+    }
+
+    .nb-card-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .nb-card-items li {
+      font-size: 0.8125rem;
+      color: var(--text-body);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .nb-card-items li span:last-child {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+
+    .nb-highlight {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      padding: clamp(24px, 3vw, 40px);
+      background: var(--cream-dark);
+    }
+
+    .nb-highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nb-highlight-value {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .nb-highlight-label {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 900px) {
+      .neighborhood-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .neighborhood-grid { grid-template-columns: 1fr; }
+      .neighborhood-header { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ════════════════════════════════════════
        DARK SECTION (Mahogany)
     ════════════════════════════════════════ */
     .dark-section {
@@ -1521,6 +1638,7 @@
       <a href="#gallery">Gallery</a>
       <a href="#features">Features</a>
       <a href="#details">Details</a>
+      <a href="#neighborhood">Area</a>
       <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.75rem; background: #000; color: #fff; border-color: #000;">Schedule Tour</a>
     </nav>
   </div>
@@ -1579,6 +1697,7 @@
         <a href="#gallery" class="active">Gallery</a>
         <a href="#features">Features</a>
         <a href="#details">Details</a>
+        <a href="#neighborhood">Area</a>
         <a href="#contact">Contact</a>
       </nav>
 
@@ -1822,6 +1941,125 @@ feel at home.</span>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ NEIGHBORHOOD ═══════ -->
+    <section class="neighborhood container" id="neighborhood">
+      <div class="neighborhood-header reveal">
+        <h2 class="serif-md">The Neighborhood</h2>
+        <p class="sans-md">Suburban quiet with urban convenience — everything you need within minutes of your front door.</p>
+      </div>
+
+      <div class="neighborhood-grid stagger">
+        <!-- Highlight bar -->
+        <div class="nb-highlight">
+          <div class="nb-highlight-item">
+            <span class="nb-highlight-value">~50 min</span>
+            <span class="nb-highlight-label">Express train to<br>Grand Central, NYC</span>
+          </div>
+          <div class="nb-highlight-item">
+            <span class="nb-highlight-value">1 mi</span>
+            <span class="nb-highlight-label">To Merritt Parkway<br>on-ramp (Exit 34)</span>
+          </div>
+          <div class="nb-highlight-item">
+            <span class="nb-highlight-value">10 min</span>
+            <span class="nb-highlight-label">Drive to downtown<br>Stamford</span>
+          </div>
+          <div class="nb-highlight-item">
+            <span class="nb-highlight-value">2.5 mi</span>
+            <span class="nb-highlight-label">To Stamford Hospital<br>Level II trauma center</span>
+          </div>
+        </div>
+
+        <!-- Grocery & Essentials -->
+        <div class="nb-card reveal">
+          <div class="nb-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+          </div>
+          <h3 class="nb-card-title">Grocery & Essentials</h3>
+          <ul class="nb-card-items">
+            <li><span>ShopRite</span><span>1.5 mi</span></li>
+            <li><span>Stop & Shop</span><span>2 mi</span></li>
+            <li><span>Trader Joe's</span><span>2.5 mi</span></li>
+            <li><span>Whole Foods Market</span><span>3 mi</span></li>
+            <li><span>Costco</span><span>4 mi</span></li>
+          </ul>
+        </div>
+
+        <!-- Parks & Outdoors -->
+        <div class="nb-card reveal">
+          <div class="nb-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><path d="M12 3C7 3 3 7 3 12"/><path d="M21 12c0-5-4-9-9-9"/><line x1="12" y1="3" x2="12" y2="12"/></svg>
+          </div>
+          <h3 class="nb-card-title">Parks & Outdoors</h3>
+          <ul class="nb-card-items">
+            <li><span>Scalzi Park</span><span>1.5 mi</span></li>
+            <li><span>Stamford Museum & Nature Center</span><span>2.5 mi</span></li>
+            <li><span>Bartlett Arboretum</span><span>3.5 mi</span></li>
+            <li><span>Mianus River Park</span><span>4 mi</span></li>
+            <li><span>Cove Island Park</span><span>5.5 mi</span></li>
+          </ul>
+        </div>
+
+        <!-- Fitness -->
+        <div class="nb-card reveal">
+          <div class="nb-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M6 8H5a4 4 0 000 8h1"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>
+          </div>
+          <h3 class="nb-card-title">Fitness & Wellness</h3>
+          <ul class="nb-card-items">
+            <li><span>Planet Fitness</span><span>2 mi</span></li>
+            <li><span>LA Fitness</span><span>2.5 mi</span></li>
+            <li><span>Orangetheory Fitness</span><span>2.5 mi</span></li>
+            <li><span>Chelsea Piers CT</span><span>4 mi</span></li>
+            <li><span>YMCA of Stamford</span><span>3.5 mi</span></li>
+          </ul>
+        </div>
+
+        <!-- Dining & Nightlife -->
+        <div class="nb-card reveal">
+          <div class="nb-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3 class="nb-card-title">Dining & Nightlife</h3>
+          <ul class="nb-card-items">
+            <li><span>Kouzina Greek Bistro</span><span>2 mi</span></li>
+            <li><span>Columbus Park Trattoria</span><span>3.5 mi</span></li>
+            <li><span>RPM Italian</span><span>3.5 mi</span></li>
+            <li><span>The Capital Grille</span><span>3.5 mi</span></li>
+            <li><span>Saltwater (Harbor Point)</span><span>5 mi</span></li>
+          </ul>
+        </div>
+
+        <!-- Coffee & Cafes -->
+        <div class="nb-card reveal">
+          <div class="nb-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3 class="nb-card-title">Coffee & Cafes</h3>
+          <ul class="nb-card-items">
+            <li><span>Starbucks</span><span>1.5 mi</span></li>
+            <li><span>Dunkin'</span><span>1.5 mi</span></li>
+            <li><span>Lorca (Colombian coffee)</span><span>3.5 mi</span></li>
+            <li><span>Dome</span><span>3.5 mi</span></li>
+          </ul>
+        </div>
+
+        <!-- Shopping & Entertainment -->
+        <div class="nb-card reveal">
+          <div class="nb-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 8v13a1 1 0 001 1h16a1 1 0 001-1V8l-3-6z"/><line x1="3" y1="8" x2="21" y2="8"/><path d="M16 12a4 4 0 01-8 0"/></svg>
+          </div>
+          <h3 class="nb-card-title">Shopping & Fun</h3>
+          <ul class="nb-card-items">
+            <li><span>High Ridge Shopping Center</span><span>2 mi</span></li>
+            <li><span>Ridgeway (Target, Marshalls)</span><span>2.5 mi</span></li>
+            <li><span>Stamford Town Center</span><span>3.5 mi</span></li>
+            <li><span>The Palace Theatre</span><span>3.5 mi</span></li>
+            <li><span>Bow Tie Cinemas</span><span>3 mi</span></li>
+          </ul>
         </div>
       </div>
     </section>
@@ -2091,17 +2329,39 @@ I-95 / Merritt Parkway</span>
     lofiAudio.volume = 0.5;
     let isPlaying = false;
 
+    function startMusic() {
+      if (isPlaying) return;
+      lofiAudio.play().then(() => {
+        musicPlayer.classList.add('playing');
+        isPlaying = true;
+      }).catch(() => {});
+    }
+
+    function toggleMusic() {
+      if (!isPlaying) {
+        startMusic();
+      } else {
+        lofiAudio.pause();
+        musicPlayer.classList.remove('playing');
+        isPlaying = false;
+      }
+    }
+
+    // Autoplay on first user interaction (browsers require a gesture)
+    function autoplayOnce() {
+      startMusic();
+      document.removeEventListener('click', autoplayOnce);
+      document.removeEventListener('scroll', autoplayOnce);
+      document.removeEventListener('touchstart', autoplayOnce);
+    }
+    document.addEventListener('click', autoplayOnce, { once: true });
+    document.addEventListener('scroll', autoplayOnce, { once: true });
+    document.addEventListener('touchstart', autoplayOnce, { once: true });
+
     if (musicPlayer) {
-      musicPlayer.addEventListener('click', () => {
-        if (!isPlaying) {
-          lofiAudio.play();
-          musicPlayer.classList.add('playing');
-          isPlaying = true;
-        } else {
-          lofiAudio.pause();
-          musicPlayer.classList.remove('playing');
-          isPlaying = false;
-        }
+      musicPlayer.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMusic();
       });
     }
 

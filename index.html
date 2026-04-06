@@ -2084,132 +2084,21 @@ I-95 / Merritt Parkway</span>
 
     document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
 
-    // ─── Lo-fi ambient music (Web Audio API) ───
+    // ─── Vinyl music player ───
     const musicPlayer = document.getElementById('musicPlayer');
-    let audioCtx, isPlaying = false, masterGain;
-
-    function createLofi() {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      masterGain = audioCtx.createGain();
-      masterGain.gain.value = 0;
-      masterGain.connect(audioCtx.destination);
-
-      // Warm reverb via convolver
-      const convolver = audioCtx.createConvolver();
-      const rate = audioCtx.sampleRate;
-      const len = rate * 3;
-      const impulse = audioCtx.createBuffer(2, len, rate);
-      for (let ch = 0; ch < 2; ch++) {
-        const data = impulse.getChannelData(ch);
-        for (let i = 0; i < len; i++) {
-          data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.5);
-        }
-      }
-      convolver.buffer = impulse;
-
-      const reverbGain = audioCtx.createGain();
-      reverbGain.gain.value = 0.4;
-      convolver.connect(reverbGain);
-      reverbGain.connect(masterGain);
-
-      const dryGain = audioCtx.createGain();
-      dryGain.gain.value = 0.6;
-      dryGain.connect(masterGain);
-
-      // Lo-pass filter for warmth
-      const filter = audioCtx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.value = 800;
-      filter.Q.value = 0.7;
-      filter.connect(dryGain);
-      filter.connect(convolver);
-
-      // Chord progression: Am7 → Fmaj7 → Cmaj7 → G
-      const chords = [
-        [220, 261.63, 329.63, 392],
-        [174.61, 220, 261.63, 329.63],
-        [261.63, 329.63, 392, 493.88],
-        [196, 246.94, 293.66, 392]
-      ];
-
-      let chordIdx = 0;
-      const activeOscs = [];
-
-      function playChord() {
-        // Fade out old oscillators
-        activeOscs.forEach(o => {
-          o.gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1.5);
-          setTimeout(() => { try { o.osc.stop(); } catch(e) {} }, 2000);
-        });
-        activeOscs.length = 0;
-
-        const freqs = chords[chordIdx % chords.length];
-        chordIdx++;
-
-        freqs.forEach((freq, i) => {
-          const osc = audioCtx.createOscillator();
-          osc.type = 'sine';
-          osc.frequency.value = freq * 0.5; // One octave lower for deeper tone
-          // Slight detuning for warmth
-          osc.detune.value = (Math.random() - 0.5) * 12;
-
-          const oscGain = audioCtx.createGain();
-          oscGain.gain.value = 0;
-          oscGain.gain.linearRampToValueAtTime(0.06 - i * 0.008, audioCtx.currentTime + 2);
-
-          osc.connect(oscGain);
-          oscGain.connect(filter);
-          osc.start();
-          activeOscs.push({ osc, gain: oscGain });
-
-          // Add a sub-harmonic for depth
-          if (i === 0) {
-            const sub = audioCtx.createOscillator();
-            sub.type = 'triangle';
-            sub.frequency.value = freq * 0.25;
-            const subGain = audioCtx.createGain();
-            subGain.gain.value = 0;
-            subGain.gain.linearRampToValueAtTime(0.03, audioCtx.currentTime + 2.5);
-            sub.connect(subGain);
-            subGain.connect(filter);
-            sub.start();
-            activeOscs.push({ osc: sub, gain: subGain });
-          }
-        });
-      }
-
-      // Add subtle vinyl crackle
-      const crackleGain = audioCtx.createGain();
-      crackleGain.gain.value = 0.015;
-      crackleGain.connect(masterGain);
-      const bufSize = 4096;
-      const crackle = audioCtx.createScriptProcessor(bufSize, 1, 1);
-      crackle.onaudioprocess = (e) => {
-        const output = e.outputBuffer.getChannelData(0);
-        for (let i = 0; i < bufSize; i++) {
-          output[i] = Math.random() < 0.002 ? (Math.random() * 0.5 - 0.25) : (Math.random() * 0.01 - 0.005);
-        }
-      };
-      crackle.connect(crackleGain);
-
-      // Start chord loop
-      playChord();
-      setInterval(playChord, 6000);
-
-      // Fade in
-      masterGain.gain.linearRampToValueAtTime(0.7, audioCtx.currentTime + 3);
-    }
+    const lofiAudio = new Audio('audio/quixotic.mp3');
+    lofiAudio.loop = true;
+    lofiAudio.volume = 0.5;
+    let isPlaying = false;
 
     if (musicPlayer) {
       musicPlayer.addEventListener('click', () => {
         if (!isPlaying) {
-          if (!audioCtx) createLofi();
-          else audioCtx.resume();
-          masterGain.gain.linearRampToValueAtTime(0.7, audioCtx.currentTime + 1);
+          lofiAudio.play();
           musicPlayer.classList.add('playing');
           isPlaying = true;
         } else {
-          masterGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.5);
+          lofiAudio.pause();
           musicPlayer.classList.remove('playing');
           isPlaying = false;
         }

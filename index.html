@@ -13,36 +13,36 @@
        TOKENS — Warm Mahogany / Wood Palette
     ════════════════════════════════════════ */
     :root {
-      --mahogany-900: #2c1810;
-      --mahogany-800: #3e2117;
-      --mahogany-700: #5c3324;
-      --mahogany-600: #7a4432;
-      --mahogany-500: #96543e;
-      --mahogany-400: #b07a62;
-      --mahogany-300: #c9a08a;
-      --mahogany-200: #dfc4b4;
-      --mahogany-100: #ede0d6;
-      --mahogany-50:  #f7f0eb;
+      --mahogany-900: #1a1108;
+      --mahogany-800: #2e220f;
+      --mahogany-700: #4a3820;
+      --mahogany-600: #6b5235;
+      --mahogany-500: #8a6a48;
+      --mahogany-400: #b09070;
+      --mahogany-300: #c9a88a;
+      --mahogany-200: #dfc4a8;
+      --mahogany-100: #ede0c8;
+      --mahogany-50:  #f7f0e0;
 
-      --cream: #faf6f1;
-      --cream-dark: #f0e8df;
-      --ivory: #fffcf8;
-      --white: #ffffff;
+      --cream: #2e220f;
+      --cream-dark: #3a2d18;
+      --ivory: #362a16;
+      --white: #f0e6d2;
 
-      --text-dark: #2c1810;
-      --text-body: #5c4a3e;
-      --text-muted: #8a7668;
-      --text-light: rgba(44, 24, 16, 0.4);
+      --text-dark: #f0e6d2;
+      --text-body: #c4b49a;
+      --text-muted: #9a8a70;
+      --text-light: rgba(240, 230, 210, 0.35);
 
-      --gold: #b8860b;
-      --gold-light: rgba(184, 134, 11, 0.1);
+      --gold: #d4a020;
+      --gold-light: rgba(212, 160, 32, 0.15);
 
-      --border: rgba(44, 24, 16, 0.1);
-      --border-strong: rgba(44, 24, 16, 0.2);
+      --border: rgba(240, 230, 210, 0.1);
+      --border-strong: rgba(240, 230, 210, 0.18);
 
-      --shadow-sm: 0 1px 3px rgba(44, 24, 16, 0.06);
-      --shadow-md: 0 8px 30px rgba(44, 24, 16, 0.08);
-      --shadow-lg: 0 20px 60px rgba(44, 24, 16, 0.1);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.15);
+      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.2);
+      --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.25);
 
       --font-serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -195,7 +195,7 @@
     }
 
     .sticky-header.scrolled {
-      background: rgba(250, 246, 241, 0.9);
+      background: rgba(46, 34, 15, 0.9);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
@@ -255,20 +255,20 @@
     }
 
     .btn:hover {
-      background: var(--mahogany-800);
-      color: var(--cream);
-      border-color: var(--mahogany-800);
+      background: var(--text-dark);
+      color: var(--mahogany-900);
+      border-color: var(--text-dark);
     }
 
     .btn-primary {
-      background: var(--mahogany-800);
-      color: var(--cream);
-      border-color: var(--mahogany-800);
+      background: var(--gold);
+      color: var(--mahogany-900);
+      border-color: var(--gold);
     }
 
     .btn-primary:hover {
-      background: var(--mahogany-900);
-      border-color: var(--mahogany-900);
+      background: #e8b030;
+      border-color: #e8b030;
     }
 
     .btn-gold {
@@ -291,13 +291,13 @@
 
     .btn-dark {
       border-color: rgba(255,255,255,0.2);
-      color: var(--cream);
+      color: var(--white);
     }
 
     .btn-dark:hover {
-      background: var(--cream);
+      background: var(--white);
       color: var(--mahogany-900);
-      border-color: var(--cream);
+      border-color: var(--white);
     }
 
     /* ════════════════════════════════════════
@@ -425,7 +425,7 @@
       height: clamp(35px, 4.5vw, 60px);
       border-radius: 100px;
       flex-shrink: 0;
-      background: linear-gradient(135deg, var(--mahogany-700), var(--mahogany-400));
+      background: linear-gradient(135deg, var(--gold), #d4a020);
       position: relative;
       overflow: hidden;
     }
@@ -438,8 +438,8 @@
         -45deg,
         transparent,
         transparent 4px,
-        rgba(255,255,255,0.06) 4px,
-        rgba(255,255,255,0.06) 8px
+        rgba(255,255,255,0.08) 4px,
+        rgba(255,255,255,0.08) 8px
       );
     }
 
@@ -449,7 +449,7 @@
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--cream);
+      color: var(--mahogany-900);
       position: relative;
       z-index: 1;
       transform: none !important;
@@ -585,8 +585,8 @@
       height: clamp(45px, 5.5vw, 90px);
       border-radius: 100px;
       flex-shrink: 0;
-      border: 1px solid var(--border-strong);
-      background: var(--cream-dark);
+      border: 1px solid rgba(240, 230, 210, 0.15);
+      background: rgba(240, 230, 210, 0.05);
       position: relative;
     }
 
@@ -716,7 +716,7 @@
     .splash-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(44,24,16,0.15) 0%, rgba(44,24,16,0.5) 100%);
+      background: linear-gradient(180deg, rgba(26,17,8,0.2) 0%, rgba(26,17,8,0.6) 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -728,7 +728,7 @@
 
     .splash-overlay span {
       font-family: var(--font-serif);
-      color: var(--cream);
+      color: var(--white);
       white-space: pre-line;
     }
 
@@ -804,9 +804,9 @@
 
     .accordion-item.open .accordion-icon {
       transform: rotate(45deg);
-      background: var(--mahogany-800);
-      color: var(--cream);
-      border-color: var(--mahogany-800);
+      background: var(--gold);
+      color: var(--mahogany-900);
+      border-color: var(--gold);
     }
 
     .accordion-content {
@@ -830,14 +830,14 @@
        DARK SECTION (Mahogany)
     ════════════════════════════════════════ */
     .dark-section {
-      background: var(--mahogany-900);
-      color: var(--cream);
+      background: #1a1108;
+      color: var(--text-dark);
       padding: clamp(80px, 10vw, 160px) 0;
     }
 
     .dark-section .serif-lg,
     .dark-section .serif-md,
-    .dark-section .serif-sm { color: var(--cream); }
+    .dark-section .serif-sm { color: var(--text-dark); }
 
     /* Huge caption */
     .huge-caption {
@@ -906,7 +906,7 @@
     .stat-value {
       font-family: var(--font-serif);
       font-size: clamp(1.5rem, 3vw, 2.5rem);
-      color: var(--cream);
+      color: var(--text-dark);
       margin-bottom: 6px;
     }
 
@@ -992,14 +992,14 @@
       font-size: clamp(2.5rem, 7vw, 6.5rem);
       line-height: 1.05;
       text-align: center;
-      color: var(--cream);
+      color: var(--text-dark);
       pointer-events: none;
     }
 
     .pre-footer-bg .pre-footer-big { opacity: 0.04; }
 
     .pre-footer-fg .pre-footer-big {
-      background: linear-gradient(180deg, rgba(250,246,241,1) 0%, rgba(250,246,241,0.2) 100%);
+      background: linear-gradient(180deg, rgba(240,230,210,1) 0%, rgba(240,230,210,0.2) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -1012,7 +1012,7 @@
       justify-content: space-between;
       align-items: flex-end;
       gap: var(--gutter);
-      color: var(--cream);
+      color: var(--text-dark);
     }
 
     .pre-footer-right {
@@ -1030,7 +1030,7 @@
     ════════════════════════════════════════ */
     .footer {
       background: var(--mahogany-900);
-      color: var(--cream);
+      color: var(--text-dark);
       border-top: 1px solid rgba(255,255,255,0.08);
     }
 
@@ -1248,7 +1248,7 @@
       font-size: clamp(2.5rem, 7vw, 6rem);
       font-weight: 400;
       line-height: 1;
-      color: var(--cream);
+      color: var(--white);
     }
 
     .video-hero-title span {
@@ -1285,7 +1285,7 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--cream);
+      color: var(--white);
       backdrop-filter: blur(8px);
       background: rgba(255,255,255,0.08);
       opacity: 0;
@@ -1346,30 +1346,72 @@
       50% { transform: scaleY(0.5); opacity: 0.2; }
     }
 
-    .video-sound-btn {
-      position: absolute;
-      top: clamp(80px, 10vw, 120px);
+    /* ── Lo-fi music player ── */
+    .music-player {
+      position: fixed;
+      bottom: 24px;
       right: 24px;
-      z-index: 3;
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.2);
-      backdrop-filter: blur(8px);
-      background: rgba(255,255,255,0.08);
+      z-index: 200;
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: var(--cream);
-      transition: all 0.3s var(--ease);
+      gap: 12px;
+      padding: 10px 18px 10px 14px;
+      border-radius: 100px;
+      background: rgba(26, 17, 8, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(240, 230, 210, 0.1);
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: all 0.4s var(--ease);
       opacity: 0;
+      transform: translateY(20px);
       animation: videoTitleIn 0.6s var(--ease) 2s forwards;
     }
 
-    .video-sound-btn:hover {
-      background: rgba(255,255,255,0.15);
+    .music-player:hover {
+      background: rgba(26, 17, 8, 0.95);
+      border-color: rgba(240, 230, 210, 0.2);
     }
 
-    .video-sound-btn svg { width: 18px; height: 18px; }
+    .music-player svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    .music-player-label {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .music-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 14px;
+    }
+
+    .music-bar {
+      width: 2.5px;
+      border-radius: 1px;
+      background: var(--gold);
+      transition: height 0.3s;
+    }
+
+    .music-bar:nth-child(1) { height: 4px; animation: barPulse 1.2s ease-in-out infinite; }
+    .music-bar:nth-child(2) { height: 10px; animation: barPulse 0.8s ease-in-out 0.2s infinite; }
+    .music-bar:nth-child(3) { height: 6px; animation: barPulse 1s ease-in-out 0.4s infinite; }
+    .music-bar:nth-child(4) { height: 12px; animation: barPulse 0.9s ease-in-out 0.1s infinite; }
+
+    .music-player.paused .music-bar {
+      animation: none;
+      height: 3px !important;
+    }
+
+    @keyframes barPulse {
+      0%, 100% { height: 4px; }
+      50% { height: 14px; }
+    }
 
     @media (max-width: 768px) {
       .video-hero { height: 85vh; }
@@ -1414,10 +1456,6 @@
         <p class="video-hero-subtitle">780 Sq Ft &middot; 1 Bed &middot; 1 Bath<br>$2,505/mo</p>
       </div>
     </div>
-    <button class="video-sound-btn" id="soundBtn" aria-label="Toggle sound">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="soundOff"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="soundOn" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-    </button>
     <div class="video-hero-scroll">
       <span>Scroll</span>
       <div class="scroll-line"></div>
@@ -1751,8 +1789,8 @@ feel at home.</span>
           <div class="push-img">
             <img src="images/IMG_4946.jpg" alt="Springdale neighborhood" loading="lazy">
           </div>
-          <div class="push-content" style="color: var(--cream);">
-            <div class="push-title" style="color: var(--cream);">
+          <div class="push-content" style="color: var(--white);">
+            <div class="push-title" style="color: var(--white);">
               <span>Ready to see it?</span>
               <span>Schedule a tour.</span>
             </div>
@@ -1869,6 +1907,17 @@ I-95 / Merritt Parkway</span>
     </div>
   </footer>
 
+  <!-- ── Lo-fi music player ── -->
+  <div class="music-player paused" id="musicPlayer">
+    <div class="music-bars">
+      <span class="music-bar"></span>
+      <span class="music-bar"></span>
+      <span class="music-bar"></span>
+      <span class="music-bar"></span>
+    </div>
+    <span class="music-player-label">Lo-fi</span>
+  </div>
+
   <!-- ═══════ JAVASCRIPT ═══════ -->
   <script>
     // ─── Scroll reveal ───
@@ -1945,17 +1994,135 @@ I-95 / Merritt Parkway</span>
 
     document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
 
-    // ─── Video sound toggle ───
-    const video = document.getElementById('heroVideo');
-    const soundBtn = document.getElementById('soundBtn');
-    const soundOff = document.getElementById('soundOff');
-    const soundOn = document.getElementById('soundOn');
+    // ─── Lo-fi ambient music (Web Audio API) ───
+    const musicPlayer = document.getElementById('musicPlayer');
+    let audioCtx, isPlaying = false, masterGain;
 
-    if (soundBtn && video) {
-      soundBtn.addEventListener('click', () => {
-        video.muted = !video.muted;
-        soundOff.style.display = video.muted ? 'block' : 'none';
-        soundOn.style.display = video.muted ? 'none' : 'block';
+    function createLofi() {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      masterGain = audioCtx.createGain();
+      masterGain.gain.value = 0;
+      masterGain.connect(audioCtx.destination);
+
+      // Warm reverb via convolver
+      const convolver = audioCtx.createConvolver();
+      const rate = audioCtx.sampleRate;
+      const len = rate * 3;
+      const impulse = audioCtx.createBuffer(2, len, rate);
+      for (let ch = 0; ch < 2; ch++) {
+        const data = impulse.getChannelData(ch);
+        for (let i = 0; i < len; i++) {
+          data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.5);
+        }
+      }
+      convolver.buffer = impulse;
+
+      const reverbGain = audioCtx.createGain();
+      reverbGain.gain.value = 0.4;
+      convolver.connect(reverbGain);
+      reverbGain.connect(masterGain);
+
+      const dryGain = audioCtx.createGain();
+      dryGain.gain.value = 0.6;
+      dryGain.connect(masterGain);
+
+      // Lo-pass filter for warmth
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.value = 800;
+      filter.Q.value = 0.7;
+      filter.connect(dryGain);
+      filter.connect(convolver);
+
+      // Chord progression: Am7 → Fmaj7 → Cmaj7 → G
+      const chords = [
+        [220, 261.63, 329.63, 392],
+        [174.61, 220, 261.63, 329.63],
+        [261.63, 329.63, 392, 493.88],
+        [196, 246.94, 293.66, 392]
+      ];
+
+      let chordIdx = 0;
+      const activeOscs = [];
+
+      function playChord() {
+        // Fade out old oscillators
+        activeOscs.forEach(o => {
+          o.gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1.5);
+          setTimeout(() => { try { o.osc.stop(); } catch(e) {} }, 2000);
+        });
+        activeOscs.length = 0;
+
+        const freqs = chords[chordIdx % chords.length];
+        chordIdx++;
+
+        freqs.forEach((freq, i) => {
+          const osc = audioCtx.createOscillator();
+          osc.type = 'sine';
+          osc.frequency.value = freq * 0.5; // One octave lower for deeper tone
+          // Slight detuning for warmth
+          osc.detune.value = (Math.random() - 0.5) * 12;
+
+          const oscGain = audioCtx.createGain();
+          oscGain.gain.value = 0;
+          oscGain.gain.linearRampToValueAtTime(0.06 - i * 0.008, audioCtx.currentTime + 2);
+
+          osc.connect(oscGain);
+          oscGain.connect(filter);
+          osc.start();
+          activeOscs.push({ osc, gain: oscGain });
+
+          // Add a sub-harmonic for depth
+          if (i === 0) {
+            const sub = audioCtx.createOscillator();
+            sub.type = 'triangle';
+            sub.frequency.value = freq * 0.25;
+            const subGain = audioCtx.createGain();
+            subGain.gain.value = 0;
+            subGain.gain.linearRampToValueAtTime(0.03, audioCtx.currentTime + 2.5);
+            sub.connect(subGain);
+            subGain.connect(filter);
+            sub.start();
+            activeOscs.push({ osc: sub, gain: subGain });
+          }
+        });
+      }
+
+      // Add subtle vinyl crackle
+      const crackleGain = audioCtx.createGain();
+      crackleGain.gain.value = 0.015;
+      crackleGain.connect(masterGain);
+      const bufSize = 4096;
+      const crackle = audioCtx.createScriptProcessor(bufSize, 1, 1);
+      crackle.onaudioprocess = (e) => {
+        const output = e.outputBuffer.getChannelData(0);
+        for (let i = 0; i < bufSize; i++) {
+          output[i] = Math.random() < 0.002 ? (Math.random() * 0.5 - 0.25) : (Math.random() * 0.01 - 0.005);
+        }
+      };
+      crackle.connect(crackleGain);
+
+      // Start chord loop
+      playChord();
+      setInterval(playChord, 6000);
+
+      // Fade in
+      masterGain.gain.linearRampToValueAtTime(0.7, audioCtx.currentTime + 3);
+    }
+
+    if (musicPlayer) {
+      musicPlayer.addEventListener('click', () => {
+        if (!isPlaying) {
+          if (!audioCtx) createLofi();
+          else audioCtx.resume();
+          masterGain.gain.linearRampToValueAtTime(0.7, audioCtx.currentTime + 1);
+          musicPlayer.classList.remove('paused');
+          isPlaying = true;
+        } else {
+          masterGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.5);
+          musicPlayer.classList.add('paused');
+          isPlaying = false;
+        }
       });
     }
 

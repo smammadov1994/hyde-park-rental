@@ -1162,6 +1162,7 @@
       display: flex;
       gap: 40px;
       white-space: nowrap;
+      width: max-content;
       animation: marquee 25s linear infinite;
     }
 
@@ -2328,40 +2329,49 @@ I-95 / Merritt Parkway</span>
     lofiAudio.loop = true;
     lofiAudio.volume = 0.5;
     let isPlaying = false;
+    let userToggledOff = false;
 
     function startMusic() {
       if (isPlaying) return;
       lofiAudio.play().then(() => {
-        musicPlayer.classList.add('playing');
+        if (musicPlayer) musicPlayer.classList.add('playing');
         isPlaying = true;
       }).catch(() => {});
     }
 
-    function toggleMusic() {
-      if (!isPlaying) {
-        startMusic();
-      } else {
-        lofiAudio.pause();
-        musicPlayer.classList.remove('playing');
-        isPlaying = false;
-      }
+    function stopMusic() {
+      lofiAudio.pause();
+      if (musicPlayer) musicPlayer.classList.remove('playing');
+      isPlaying = false;
     }
 
     // Autoplay on first user interaction (browsers require a gesture)
     function autoplayOnce() {
-      startMusic();
-      document.removeEventListener('click', autoplayOnce);
-      document.removeEventListener('scroll', autoplayOnce);
-      document.removeEventListener('touchstart', autoplayOnce);
+      if (!userToggledOff) startMusic();
+      removeAutoplayListeners();
     }
-    document.addEventListener('click', autoplayOnce, { once: true });
-    document.addEventListener('scroll', autoplayOnce, { once: true });
-    document.addEventListener('touchstart', autoplayOnce, { once: true });
 
+    function removeAutoplayListeners() {
+      ['click','scroll','touchstart','keydown'].forEach(evt =>
+        document.removeEventListener(evt, autoplayOnce, true)
+      );
+    }
+
+    ['click','scroll','touchstart','keydown'].forEach(evt =>
+      document.addEventListener(evt, autoplayOnce, { capture: true, once: true })
+    );
+
+    // Vinyl player toggle (click the record to pause/resume)
     if (musicPlayer) {
       musicPlayer.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleMusic();
+        e.preventDefault();
+        if (isPlaying) {
+          stopMusic();
+          userToggledOff = true;
+        } else {
+          startMusic();
+          userToggledOff = false;
+        }
       });
     }
 

@@ -1646,7 +1646,7 @@
 
   <!-- ═══════ VIDEO HERO (FULL SCREEN) ═══════ -->
   <section class="video-hero">
-    <video autoplay muted loop playsinline id="heroVideo">
+    <video autoplay muted loop playsinline preload="auto" poster="images/IMG_5039.JPG" id="heroVideo">
       <source src="images/tour-video.mp4" type="video/mp4">
     </video>
     <div class="video-hero-overlay"></div>
@@ -2358,6 +2358,32 @@ I-95 / Merritt Parkway</span>
         } else {
           tryPlay().catch(() => {});
           userToggledOff = false;
+        }
+      });
+    }
+
+    // ─── Force video autoplay on mobile ───
+    const heroVid = document.getElementById('heroVideo');
+    if (heroVid) {
+      // Some mobile browsers need a play() nudge after load
+      heroVid.play().catch(() => {});
+      // Retry on first user interaction (iOS sometimes needs this)
+      function nudgeVideo() {
+        if (heroVid.paused) {
+          heroVid.muted = true;
+          heroVid.play().catch(() => {});
+        }
+        ['click','scroll','touchstart'].forEach(e =>
+          document.removeEventListener(e, nudgeVideo)
+        );
+      }
+      ['click','scroll','touchstart'].forEach(e =>
+        document.addEventListener(e, nudgeVideo)
+      );
+      // Also retry when video becomes visible
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && heroVid.paused) {
+          heroVid.play().catch(() => {});
         }
       });
     }

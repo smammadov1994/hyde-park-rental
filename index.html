@@ -945,6 +945,52 @@
     }
 
     /* ════════════════════════════════════════
+       DUAL FEATURE (Side-by-side cards)
+    ════════════════════════════════════════ */
+    .dual-feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(20px, 3vw, 32px);
+    }
+
+    .dual-feature-card {
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(240, 230, 210, 0.04);
+      border: 1px solid rgba(240, 230, 210, 0.08);
+      transition: border-color 0.3s;
+    }
+
+    .dual-feature-card:hover {
+      border-color: rgba(240, 230, 210, 0.15);
+    }
+
+    .dual-feature-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+    }
+
+    .dual-feature-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 4s linear;
+    }
+
+    .dual-feature-card:hover .dual-feature-img img {
+      transform: scale(1.04);
+    }
+
+    .dual-feature-body {
+      padding: clamp(20px, 3vw, 32px);
+    }
+
+    @media (max-width: 768px) {
+      .dual-feature { grid-template-columns: 1fr; }
+    }
+
+    /* ════════════════════════════════════════
        DARK SECTION (Mahogany)
     ════════════════════════════════════════ */
     .dark-section {
@@ -2074,39 +2120,43 @@ feel at home.</span>
     <div class="dark-section">
       <section>
         <div class="huge-caption serif-lg reveal">
-          <span>Minutes</span>
-          <span>From</span>
+          <span>Nature</span>
+          <span>&amp;</span>
+          <span>The</span>
+          <span>City,</span>
         </div>
         <div class="huge-caption serif-lg reveal" style="margin-top: 12px; transition-delay: 0.1s;">
-          <span>Waveny</span>
-          <span>Park</span>
+          <span>All</span>
+          <span>Within</span>
+          <span>Reach.</span>
         </div>
       </section>
 
+      <!-- Side-by-side: Waveny Park + Springdale Station -->
       <section class="container" style="margin-top: clamp(48px, 6vw, 80px);">
-        <div class="splash reveal" style="aspect-ratio: 16/9; border-radius: 8px; overflow: hidden;">
-          <img src="images/waveny-park.jpg" alt="Waveny Park bridge over pond with fall foliage, New Canaan CT" loading="lazy">
-          <div class="splash-overlay" style="background: linear-gradient(180deg, rgba(26,17,8,0.05) 0%, rgba(26,17,8,0.5) 100%);">
-            <span class="serif-md" style="margin-top: auto; margin-bottom: 24px;">300 acres of trails, fields &amp; ponds — just a short drive away.</span>
+        <div class="dual-feature stagger">
+          <!-- Waveny Park -->
+          <div class="dual-feature-card reveal">
+            <div class="dual-feature-img">
+              <img src="images/waveny-park.jpg" alt="Waveny Park bridge over pond with fall foliage, New Canaan CT" loading="lazy">
+            </div>
+            <div class="dual-feature-body">
+              <p class="sans-md" style="color: var(--gold); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.6875rem;">~15 min drive</p>
+              <h3 class="serif-md" style="margin-top: 8px;">Waveny Park</h3>
+              <p class="sans-md" style="color: var(--text-muted); margin-top: 12px; line-height: 1.7;">300 acres of trails, open fields, ponds, and woodlands in New Canaan. Home to the iconic 1912 Waveny House — a Tudor Revival "castle" surrounded by gardens. Open year-round, sunrise to sunset. Perfect for morning runs, weekend hikes, or an afternoon escape.</p>
+            </div>
           </div>
-        </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; margin-top: clamp(32px, 4vw, 56px);">
-          <div class="reveal">
-            <p class="stat-value" style="color: var(--gold);">300</p>
-            <p class="stat-label">Acres of open fields, woodlands, and waterways</p>
-          </div>
-          <div class="reveal" style="transition-delay: 0.08s;">
-            <p class="stat-value" style="color: var(--gold);">~15 min</p>
-            <p class="stat-label">Drive from your front door to the park entrance</p>
-          </div>
-          <div class="reveal" style="transition-delay: 0.16s;">
-            <p class="stat-value" style="color: var(--gold);">1912</p>
-            <p class="stat-label">Year the iconic Waveny House "castle" was built</p>
-          </div>
-          <div class="reveal" style="transition-delay: 0.24s;">
-            <p class="stat-value" style="color: var(--gold);">Free</p>
-            <p class="stat-label">Open to the public year-round, sunrise to sunset</p>
+          <!-- Springdale Station -->
+          <div class="dual-feature-card reveal" style="transition-delay: 0.1s;">
+            <div class="dual-feature-img">
+              <img src="images/IMG_4946.jpg" alt="Springdale Metro-North station" loading="lazy">
+            </div>
+            <div class="dual-feature-body">
+              <p class="sans-md" style="color: var(--gold); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.6875rem;">5 min drive</p>
+              <h3 class="serif-md" style="margin-top: 8px;">Springdale Station</h3>
+              <p class="sans-md" style="color: var(--text-muted); margin-top: 12px; line-height: 1.7;">Your closest Metro-North stop on the New Haven Line. Express trains reach Grand Central in under 50 minutes. With frequent service during rush hours, it's an easy commute to Manhattan — no car needed. Parking available at the station.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -2114,9 +2164,6 @@ feel at home.</span>
       <!-- CTA -->
       <section class="push container" style="margin-top: clamp(60px, 8vw, 100px);" id="contact">
         <div class="push-card reveal">
-          <div class="push-img">
-            <img src="images/IMG_4946.jpg" alt="Springdale neighborhood" loading="lazy">
-          </div>
           <div class="push-content" style="color: var(--white);">
             <div class="push-title" style="color: var(--white);">
               <span>Ready to see it?</span>

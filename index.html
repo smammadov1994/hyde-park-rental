@@ -1351,6 +1351,7 @@
         rgba(44, 24, 16, 0.7) 100%
       );
       z-index: 1;
+      pointer-events: none;
     }
 
     .video-hero-content {
@@ -2369,9 +2370,21 @@ I-95 / Merritt Parkway</span>
     // ─── Force video autoplay on mobile ───
     const heroVid = document.getElementById('heroVideo');
     if (heroVid) {
-      // Some mobile browsers need a play() nudge after load
+      heroVid.muted = true;
       heroVid.play().catch(() => {});
-      // Retry on first user interaction (iOS sometimes needs this)
+
+      // Tap anywhere in the video hero to force play
+      const heroSection = document.querySelector('.video-hero');
+      if (heroSection) {
+        heroSection.addEventListener('click', () => {
+          if (heroVid.paused) {
+            heroVid.muted = true;
+            heroVid.play().catch(() => {});
+          }
+        });
+      }
+
+      // Also try on first interaction anywhere on the page
       function nudgeVideo() {
         if (heroVid.paused) {
           heroVid.muted = true;
@@ -2384,7 +2397,7 @@ I-95 / Merritt Parkway</span>
       ['click','scroll','touchstart'].forEach(e =>
         document.addEventListener(e, nudgeVideo)
       );
-      // Also retry when video becomes visible
+
       document.addEventListener('visibilitychange', () => {
         if (!document.hidden && heroVid.paused) {
           heroVid.play().catch(() => {});
